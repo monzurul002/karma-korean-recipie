@@ -1,13 +1,13 @@
-import { createContext } from "react";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail, signOut, GithubAuthProvider } from "firebase/auth"; import app from "../firebase/firebase.config";
+import { createContext, useEffect, useState } from "react";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail, signOut, GithubAuthProvider, onAuthStateChanged } from "firebase/auth"; import app from "../firebase/firebase.config";
 
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app)
-
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
     const googleProvider = new GoogleAuthProvider;
     const githubProvider = new GithubAuthProvider;
 
@@ -24,13 +24,12 @@ const AuthProvider = ({ children }) => {
     // password signIn
     const emailPasswordSignIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-    }
 
+    }
     //update Profile
     const userProfileUpdate = (name, photoURL) => {
-        return updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL: photoURL
+        return updateProfile(user, {
+            displayName: name, photoURL: photoURL
         })
     }
     //reset password
@@ -47,6 +46,16 @@ const AuthProvider = ({ children }) => {
     }
 
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, []);
+
 
     const authInfo = {
 
@@ -56,7 +65,8 @@ const AuthProvider = ({ children }) => {
         userProfileUpdate,
         resetPassword,
         logOut,
-        signInWithGitHub
+        signInWithGitHub,
+        user
     }
 
 

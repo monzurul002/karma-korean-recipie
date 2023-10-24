@@ -4,11 +4,12 @@ import { useContext, useState } from "react";
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { AuthContext } from "../../provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [error, setError] = useState(null);
-    const { googleSignIn } = useContext(AuthContext)
-
+    const { googleSignIn, emailPasswordSignIn } = useContext(AuthContext)
+    const navigate = useNavigate()
     const handelGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
@@ -19,6 +20,24 @@ const Login = () => {
                 setError(error.message)
             })
     }
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        emailPasswordSignIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+
+    }
+
 
     return (
         <Container className="container py-5">
@@ -28,20 +47,21 @@ const Login = () => {
                     <img className="w-100 h-100" src={loginBg} alt="" />
                 </Col>
                 <Col className="col-md-6 border-right mt-5   ">
-                    <Form>
+                    <Form onSubmit={handleLogin}>
                         <h3 className="text-center text-info">Login</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control type="email" name="email" placeholder="Enter email" />
 
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" name="password" placeholder="Password" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Group className="mb-3 d-flex justify-content-around" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
+                            <p className="text-danger">Do not have an Account? <Link to='/register'>Create new Account</Link> </p>
                         </Form.Group>
                         <Form.Text className="text-muted">
                             {error}

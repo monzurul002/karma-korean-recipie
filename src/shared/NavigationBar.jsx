@@ -1,7 +1,12 @@
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import logo from "../assets/logo.png"
 import { BsFillBrightnessHighFill, BsFillMoonFill, BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 const NavigationBar = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user);
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -28,8 +33,15 @@ const NavigationBar = () => {
                         <Nav>
                             <Nav.Link href="#features">Home</Nav.Link>
                             <Nav.Link href="#pricing">Blogs</Nav.Link>
-                            <Nav.Link href="#deets">< BsFillMoonFill /></Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
+                            {
+                                !user ? <Link className="btn btn-success" to="/login">Login</Link> :
+                                    <Button className="btn btn-danger">Logout</Button>
+                            }
+
+                            <Nav.Link href="#deets">
+                                < BsFillMoonFill />
+                            </Nav.Link>
+                            <Nav.Link href="#memes">
                                 <BsFillBrightnessHighFill />
                             </Nav.Link>
                         </Nav>
