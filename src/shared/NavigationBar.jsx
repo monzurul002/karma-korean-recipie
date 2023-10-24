@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 const NavigationBar = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
+    console.log(user.photoURL);
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -35,7 +35,7 @@ const NavigationBar = () => {
                             <Nav.Link href="#pricing">Blogs</Nav.Link>
                             {
                                 !user ? <Link className="btn btn-success" to="/login">Login</Link> :
-                                    <Button className="btn btn-danger">Logout</Button>
+                                    <img title={user?.displayName} className="rounded-pill" width="40px" src={user?.photoURL} alt="display-image" />
                             }
 
                             <Nav.Link href="#deets">

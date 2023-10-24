@@ -7,22 +7,26 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app)
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider;
     const githubProvider = new GithubAuthProvider;
 
     //google signin
     const googleSignIn = () => {
+        setLoading(false)
         return signInWithPopup(auth, googleProvider)
     }
 
     //createUser
     const createUserWithEmailPassword = (email, password) => {
+        setLoading(false)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // password signIn
     const emailPasswordSignIn = (email, password) => {
+        setLoading(false)
         return signInWithEmailAndPassword(auth, email, password)
 
     }
@@ -34,6 +38,7 @@ const AuthProvider = ({ children }) => {
     }
     //reset password
     const resetPassword = (email) => {
+
         return sendPasswordResetEmail(auth, email)
     }
     // logout
@@ -42,12 +47,14 @@ const AuthProvider = ({ children }) => {
     }
     //github area
     const signInWithGitHub = () => {
+        setLoading(false)
         return signInWithPopup(auth, githubProvider)
     }
 
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setLoading(false)
             setUser(currentUser);
         });
 
@@ -66,7 +73,8 @@ const AuthProvider = ({ children }) => {
         resetPassword,
         logOut,
         signInWithGitHub,
-        user
+        user,
+        loading
     }
 
 
