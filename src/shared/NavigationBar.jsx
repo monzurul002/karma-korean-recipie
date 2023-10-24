@@ -31,8 +31,8 @@ const NavigationBar = () => {
 
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#features">Home</Nav.Link>
-                            <Nav.Link href="#pricing">Blogs</Nav.Link>
+                            <Link to="/" >Home</Link>
+                            <Link className="btn" to="/blogs">Blogs</Link>
                             {
                                 !user ? <Link className="btn btn-success" to="/login">Login</Link> :
                                     <img title={user?.displayName} className="rounded-pill" width="40px" src={user?.photoURL} alt="display-image" />
