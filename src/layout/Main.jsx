@@ -1,8 +1,9 @@
+import NavigationBar from "../shared/NavigationBar";
 
 const Main = () => {
     return (
         <div>
-            <h2>Main</h2>
+            <NavigationBar></NavigationBar>
         </div>
     );
 };
