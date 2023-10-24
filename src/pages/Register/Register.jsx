@@ -21,7 +21,14 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-
+        setError(null)
+        if (password.length === 0) {
+            setError(null)
+            return setError("Password cant be empty.")
+        }
+        else if (!/(?=.*[A-Z])(?=.*[!@#$&*])/.test(password)) {
+            return setError("Password should have one uppercase and one special character.")
+        }
 
         console.log(name, email, photo, password);
     }
@@ -70,7 +77,7 @@ const Register = () => {
                             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                 <Form.Check type="checkbox" label="Check me out" />
                             </Form.Group>
-                            <Form.Text className="text-muted">
+                            <Form.Text className="text-danger">
                                 {error}
                             </Form.Text>
                             <Button className="w-100" variant="primary" type="submit">
