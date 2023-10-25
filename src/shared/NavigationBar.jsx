@@ -31,7 +31,7 @@ const NavigationBar = () => {
 
                         </Nav>
                         <Nav>
-                            <Link to="/" >Home</Link>
+                            <Link to="/">Home</Link>
                             <Link className="btn" to="/blogs">Blogs</Link>
                             {
                                 !user ? <Link className="btn btn-success" to="/login">Login</Link> :

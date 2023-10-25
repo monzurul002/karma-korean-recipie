@@ -9,24 +9,25 @@ const Slider = () => {
       <Carousel className='border-5 border-white'>
         <Carousel.Item interval={1000}>
           <img src={img1} height="450px" className='w-100  ' alt='first' />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <Carousel.Caption className='mb-5'>
+            <h3>Kimchi (fermented vegetables)</h3>
+            <p>Honestly, for most foreigners, Korean cuisine is actually synonymous with this sour and spicy dish.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={500}>
           <img src={img2} height="450px" className='w-100  ' alt='first' />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Gimbap or Kimbap (Korean sushi)</h3>
+            <p>Get ready to relish a bowl of distinctive flavours with sundubu-jjigae.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img height="450px" className='w-100  ' src={img3} alt='first' />
           <Carousel.Caption className=' '>
-            <h3>Third slide label</h3>
+            <h3>Bibimbap -rice bowl
+            </h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              A bowl of filling starch with various ingredients mixed into it.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
