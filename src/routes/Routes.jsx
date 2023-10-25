@@ -5,6 +5,7 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
 import Blogs from "../pages/Blogs/Blogs";
 import NotFound from "../pages/NotFound/NotFound";
+import Chef_Recipes from "../pages/Chef_Recipes/Chef_Recipes";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs></Blogs>
+            },
+            {
+                path: "/recipe/:id",
+                element: <Chef_Recipes></Chef_Recipes>
             },
 
         ]

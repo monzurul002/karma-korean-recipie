@@ -1,0 +1,86 @@
+import { useEffect, useState } from "react";
+import { Card, Col, Row } from "react-bootstrap";
+import { AiOutlineLike } from "react-icons/ai";
+import { FcClock } from "react-icons/fc";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { useParams } from "react-router-dom";
+import Recipes from "../Recipes/Recipes";
+
+
+const Chef_Recipes = () => {
+    const [chefInfo, setChefInfo] = useState({});
+    const [recipes, setRecipes] = useState([])
+
+    const { chef_Name, img, number_recipes, years_Experience, likes_number, description } = chefInfo;
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/chef/${id}`)
+            .then(res => res.json())
+            .then(data => setChefInfo(data))
+    }, [])
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/recipes/${id}`)
+            .then(res => res.json())
+            .then(data => setRecipes(data))
+    }, [])
+
+
+    return (
+        <div className="container">
+            <Row>
+                <Col className="col-md-7 px-3" >
+                    <Card >
+                        <Card.Img className="w-100 " height="350" variant="top" src={img} />
+                        <Card.Body>
+                            <Card.Title>{chef_Name}</Card.Title>
+                            <div className="d-flex justify-content-around">
+                                <div className="d-flex align-items-center justify-content-center mx-1 bg-light p-4">
+                                    <AiOutlineLike className="text-danger  fw-bold fs-2" />
+                                    <div className="ms-2">
+                                        <p className="fw-bold">Likes</p>
+                                        <h6 className="mt-2">{likes_number}</h6>
+                                    </div>
+                                </div>
+                                <div className="d-flex align-items-center justify-content-center mx-1 bg-light p-4">
+                                    <IoFastFoodOutline className="text-danger  fw-bold fs-2" />
+                                    <div className="ms-2">
+                                        <p className="fw-bold">Experience</p>
+                                        <h6 className="mt-2">{number_recipes} recipes.</h6>
+                                    </div>
+                                </div>
+                                <div className="d-flex align-items-center justify-content-center mx-1 bg-light p-4">
+                                    <FcClock className="text-danger  fw-bold fs-2" />
+                                    <div className="ms-2">
+                                        <p className="fw-bold">Experience</p>
+                                        <h6 className=" text-center text-secondary ">{years_Experience} years.</h6>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <Card.Text>
+                                {description}
+                            </Card.Text>
+
+                        </Card.Body>
+                    </Card>
+
+                </Col>
+                <Col className="col-md-5">
+                    {
+                        recipes.map(recipe => {
+                            return <Recipes
+                                key={recipe.id} recipe={recipe}
+                            ></Recipes>
+                        })
+                    }
+                </Col>
+            </Row>
+        </div>
+    );
+};
+
+export default Chef_Recipes;

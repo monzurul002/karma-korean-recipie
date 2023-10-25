@@ -1,9 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import ChefCard from "../ChefCard/ChefCard";
-import { CardGroup, Col, Container, Row } from "react-bootstrap";
+import { CardGroup, Container } from "react-bootstrap";
+
 
 const Chef = () => {
-    const chefs = useLoaderData()
+
+    const chefs = useLoaderData();
+
+
     return (
         <Container>
             <CardGroup>
@@ -11,9 +15,7 @@ const Chef = () => {
                 {
                     chefs.map(chef => {
                         return (
-
                             <ChefCard
-
                                 key={chef.id} chef={chef}  ></ChefCard>
                         )
                     })
