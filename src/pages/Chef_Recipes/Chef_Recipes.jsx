@@ -3,9 +3,9 @@ import { Card, Col, Row } from "react-bootstrap";
 import { AiOutlineLike } from "react-icons/ai";
 import { FcClock } from "react-icons/fc";
 import { IoFastFoodOutline } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Recipes from "../Recipes/Recipes";
-
+import bg from "../../assets/carousel/blacgBg.jpg"
 
 const Chef_Recipes = () => {
     const [chefInfo, setChefInfo] = useState({});
@@ -29,9 +29,13 @@ const Chef_Recipes = () => {
 
 
     return (
-        <div className="container">
+        <div className="p-5" style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}>
+            <div className="text-center fw-bold py-4 mb-2 bg-info ">
+                <h2>ALL INFO ABOUT OUR CHEF</h2>
+                <Link className="btn btn-warning" to="/">Go Back</Link>
+            </div>
             <Row>
-                <Col className="col-md-7 px-3" >
+                <Col className="col-md-5 px-3" >
                     <Card >
                         <Card.Img className="w-100 " height="350" variant="top" src={img} />
                         <Card.Body>
@@ -69,15 +73,20 @@ const Chef_Recipes = () => {
                     </Card>
 
                 </Col>
-                <Col className="col-md-5">
-                    {
-                        recipes.map(recipe => {
-                            return <Recipes
-                                key={recipe.id} recipe={recipe}
-                            ></Recipes>
-                        })
-                    }
+                <Col className="col-md-7 ">
+                    <h4 className="text-center text-warning">Our Expert chef's recipies.</h4>
+                    <Row>
+                        {
+                            recipes.map(recipe => {
+                                return <Recipes
+                                    key={recipe.id} recipe={recipe}
+                                ></Recipes>
+                            })
+                        }
+                    </Row>
+
                 </Col>
+
             </Row>
         </div>
     );

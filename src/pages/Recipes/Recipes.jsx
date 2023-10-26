@@ -1,37 +1,49 @@
 /* eslint-disable react/prop-types */
-import { Card } from "react-bootstrap";
-import { BiFoodTag, BiSolidHandRight } from "react-icons/bi";
-
+import { Rating } from 'react-simple-star-rating'
+import { Button, Card, Col } from "react-bootstrap";
+import { BiFoodTag, BiSolidHandRight, } from "react-icons/bi";
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import { BsFillStarFill } from "react-icons/bs";
 const Recipes = ({ recipe }) => {
     // eslint-disable-next-line react/prop-types
     const { recipe_name, ingredients, cooking_method, rating } = recipe;
     return (
-        <div>
-            <Card border="primary" >
+        <Col style={{ height: "15em" }} className='p-2 '>
+            <Card border="primary p-2" >
                 <Card.Header>
                     <Card.Title className="text-primary">{recipe_name}</Card.Title>
                 </Card.Header>
-                <Card.Body>
-                    <Card.Text className="text-secondary "><span className="fw-bold   fs-5">Cooking Method:</span> <br />
-                        <BiSolidHandRight className="text-info fs-4" />   {cooking_method} </Card.Text>
-                    <Card.Text>
+
+                <p className="text-secondary "><span className="fw-bold   fs-5">Cooking Method:</span> <br />
+                    <BiSolidHandRight className="text-info fs-4" />   {cooking_method} </p>
+                <Card.Text className='d-flex'>
+                    <div>
                         <span className=" text-danger fw-bold fs-5">Ingredients:</span>
                         {
                             ingredients.map(ingredient => {
-                                return <ul className="lh-1"
+                                return <ul className="lh-1 "
                                     key={ingredient.id}
                                 >
-                                    <span className="text-secondary"><BiFoodTag className="text-success" /> {ingredient}</span>
+                                    <span className="text-secondary "><BiFoodTag className="text-success" /> {ingredient}</span>
                                 </ul>
                             })
                         }
+                        <small className="fs-5">  <Rating
 
-                    </Card.Text>
-                    <Card.Text> {rating} </Card.Text>
+                            placeholderRating={Math.round(rating)}
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className='text-warning' />}
+                            readonly
+                            fullSymbol={<BsFillStarFill />}
+                        /><span className='text-warning fw-bold ms-1 mt-2 '>{rating}</span></small>
+                    </div>
 
-                </Card.Body>
+                </Card.Text>
+
+                <Button className='btn btn-warning'>Add to favourite</Button>
+
             </Card>
-        </div>
+        </Col>
     );
 };
 
