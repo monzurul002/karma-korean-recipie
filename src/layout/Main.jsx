@@ -4,7 +4,8 @@ import Footer from "../shared/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Loader from "../pages/Loader/Loader";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const Main = () => {
     const { loading } = useContext(AuthContext);
     if (loading) {
@@ -16,6 +17,7 @@ const Main = () => {
             <NavigationBar></NavigationBar>
             <Outlet></Outlet>
             <Footer></Footer>
+            <ToastContainer />
         </div>
     );
 };

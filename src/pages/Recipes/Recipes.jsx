@@ -4,12 +4,19 @@ import { Button, Card, Col } from "react-bootstrap";
 import { BiFoodTag, BiSolidHandRight, } from "react-icons/bi";
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { BsFillStarFill } from "react-icons/bs";
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 const Recipes = ({ recipe }) => {
+    const [added, setAdded] = useState(false)
+    const hanldeAddToFavourite = () => {
+        setAdded(!added)
+        toast("Recipe added to favorite.")
+    }
     // eslint-disable-next-line react/prop-types
     const { recipe_name, ingredients, cooking_method, rating } = recipe;
     return (
-        <Col style={{ height: "15em" }} className='p-2 '>
-            <Card border="primary p-2" >
+        <Col style={{ height: "15em" }} className='p-2  '>
+            <Card border="primary bg-light p-2 " >
                 <Card.Header>
                     <Card.Title className="text-primary">{recipe_name}</Card.Title>
                 </Card.Header>
@@ -40,7 +47,7 @@ const Recipes = ({ recipe }) => {
 
                 </Card.Text>
 
-                <Button className='btn btn-warning'>Add to favourite</Button>
+                <Button onClick={hanldeAddToFavourite} className='btn btn-warning' disabled={added}>Add to favourite</Button>
 
             </Card>
         </Col>

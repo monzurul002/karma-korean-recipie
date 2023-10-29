@@ -4,14 +4,15 @@ import { BsFillBrightnessHighFill, BsFillMoonFill, BsSearch } from "react-icons/
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+
 const NavigationBar = () => {
     const { user } = useContext(AuthContext);
-    console.log(user.photoURL);
+
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary bg-primary-subtle">
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand as={Link} href="/">
                         <img src={logo} width={"150"} alt="" />
                     </Navbar.Brand>
 
@@ -31,7 +32,10 @@ const NavigationBar = () => {
 
                         </Nav>
                         <Nav>
-                            <Link to="/">Home</Link>
+
+                            <Link to="/" className="btn" >Home</Link>
+
+
                             <Link className="btn" to="/blogs">Blogs</Link>
                             {
                                 !user ? <Link className="btn btn-success" to="/login">Login</Link> :
