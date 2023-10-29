@@ -7,7 +7,14 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const NavigationBar = () => {
     const { user } = useContext(AuthContext);
+    const theme = document.getElementById('themeToggle')
+    const darkMode = () => {
 
+        theme.setAttribute('data-bs-theme', "dark")
+    }
+    const lightMode = () => {
+        theme.setAttribute('data-bs-theme', "light")
+    }
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary bg-primary-subtle">
@@ -33,6 +40,7 @@ const NavigationBar = () => {
                         </Nav>
                         <Nav>
 
+
                             <Link to="/" className="btn" >Home</Link>
 
 
@@ -42,12 +50,12 @@ const NavigationBar = () => {
                                     <img title={user?.displayName} className="rounded-pill" width="40px" src={user?.photoURL} alt="display-image" />
                             }
 
-                            <Nav.Link href="#deets">
+                            <div onClick={darkMode}>
                                 < BsFillMoonFill />
-                            </Nav.Link>
-                            <Nav.Link href="#memes">
+                            </div>
+                            <div onClick={lightMode}>
                                 <BsFillBrightnessHighFill />
-                            </Nav.Link>
+                            </div>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider;
     const githubProvider = new GithubAuthProvider;
-
+    const [dark, setDark] = useState(true)
     //google signin
     const googleSignIn = () => {
         setLoading(false)
@@ -50,7 +50,9 @@ const AuthProvider = ({ children }) => {
         setLoading(false)
         return signInWithPopup(auth, githubProvider)
     }
-
+    const darkMode = () => {
+        setDark(!dark)
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -74,7 +76,9 @@ const AuthProvider = ({ children }) => {
         logOut,
         signInWithGitHub,
         user,
-        loading
+        loading,
+        dark,
+        darkMode
     }
 
 
