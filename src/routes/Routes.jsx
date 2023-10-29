@@ -16,7 +16,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: () => fetch('https://karma-korean-reciepies-server-11bngfj6s-monzurul002.vercel.app/chefs')
             },
             {
                 path: "/login",
