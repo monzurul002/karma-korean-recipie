@@ -4,12 +4,13 @@ import { useContext, useState } from "react";
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [error, setError] = useState(null);
     const { googleSignIn, emailPasswordSignIn } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation()
     const handelGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
@@ -30,7 +31,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
+                navigate(location.state?.from?.pathname || '/', { replace: true })
             })
             .catch(error => {
                 setError(error.message)

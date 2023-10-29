@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const theme = document.getElementById('themeToggle')
     const darkMode = () => {
 
@@ -47,15 +47,19 @@ const NavigationBar = () => {
                             <Link className="btn" to="/blogs">Blogs</Link>
                             {
                                 !user ? <Link className="btn btn-success" to="/login">Login</Link> :
-                                    <img title={user?.displayName} className="rounded-pill" width="40px" src={user?.photoURL} alt="display-image" />
+                                    <><img title={user?.displayName} className="rounded-pill" width="40px" src={user?.photoURL} alt="" />
+                                        <Button onClick={logOut} className="btn btn-danger mx-1">Logout</Button>
+                                    </>
                             }
 
-                            <div onClick={darkMode}>
-                                < BsFillMoonFill />
+
+                            <div className="mx-3 mt-1 " onClick={darkMode}>
+                                < BsFillMoonFill className="fs-4" />
                             </div>
-                            <div onClick={lightMode}>
-                                <BsFillBrightnessHighFill />
+                            <div onClick={lightMode} className="mt-1">
+                                <BsFillBrightnessHighFill className="fs-4" />
                             </div>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

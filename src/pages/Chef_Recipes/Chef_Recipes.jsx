@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import Recipes from "../Recipes/Recipes";
 import bg from "../../assets/carousel/blacgBg.jpg"
 
+
 const Chef_Recipes = () => {
     const [chefInfo, setChefInfo] = useState({});
     const [recipes, setRecipes] = useState([])
@@ -37,7 +38,9 @@ const Chef_Recipes = () => {
             <Row>
                 <Col className="col-md-5 px-3" >
                     <Card >
+
                         <Card.Img className="w-100 " height="350" variant="top" src={img} />
+
                         <Card.Body>
                             <Card.Title>{chef_Name}</Card.Title>
                             <div className="d-flex justify-content-around">

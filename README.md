@@ -1,8 +1,36 @@
-# React + Vite
+# KARMA-KOREAN-RECIPIES
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### It's a Full-Stack React base E-Commerce type Web App.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Main Functionalists :
+
+- On the Home page you can see a main carousel banner.
+- Then you can see 6 card which information comes form server.
+- After clicking the specific card, the route will change.You get specific card info which also come from backend server.
+- If the user doesn't login ,the user can not see some functionalities.
+- Private route implementd.
+- Dark mode is also implemented.
+- Password baded SignUp
+- Google & github signUp 
+- Footer
+
+
+---
+
+### See dtails .. [Click Here](https://gadgets-emporium.web.app)
+
+
+
+## Prerequisites
+
+The following open source packages are used in this project:
+
+- React JS v18
+- Tailwind CSS
+- Bootstrap
+- React Router DOM v6
+- React Icons
+
+---
