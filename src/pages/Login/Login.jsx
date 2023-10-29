@@ -44,7 +44,7 @@ const Login = () => {
         <Container className="container py-5">
             <Row>
 
-                <Col className="col-md-6 ">
+                <Col className="col-md-6 col-12 ">
                     <img className="w-100 h-100" src={loginBg} alt="" />
                 </Col>
                 <Col className="col-md-6 border-right mt-5   ">

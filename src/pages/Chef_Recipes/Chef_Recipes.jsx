@@ -16,14 +16,14 @@ const Chef_Recipes = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/chef/${id}`)
+        fetch(`https://karma-korean-reciepies-server-11bngfj6s-monzurul002.vercel.app/chef/${id}`)
             .then(res => res.json())
             .then(data => setChefInfo(data))
     }, [])
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/recipes/${id}`)
+        fetch(`https://karma-korean-reciepies-server-11bngfj6s-monzurul002.vercel.app/recipes/${id}`)
             .then(res => res.json())
             .then(data => setRecipes(data))
     }, [])
@@ -31,7 +31,7 @@ const Chef_Recipes = () => {
 
     return (
         <div className="p-5" style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}>
-            <div className="text-center fw-bold py-4 mb-2 bg-info ">
+            <div className="text-center fw-bold py-3 mb-2 bg-info ">
                 <h2>ALL INFO ABOUT OUR CHEF</h2>
                 <Link className="btn btn-warning" to="/">Go Back</Link>
             </div>
@@ -43,8 +43,8 @@ const Chef_Recipes = () => {
 
                         <Card.Body>
                             <Card.Title>{chef_Name}</Card.Title>
-                            <div className="d-flex justify-content-around">
-                                <div className="d-flex align-items-center justify-content-center mx-1 bg-light p-4">
+                            <div className="d-flex flex-column flex-md-row">
+                                <div className="d-flex  align-items-center justify-content-center mx-1 bg-light flex-column">
                                     <AiOutlineLike className="text-danger  fw-bold fs-2" />
                                     <div className="ms-2">
                                         <p className="fw-bold">Likes</p>

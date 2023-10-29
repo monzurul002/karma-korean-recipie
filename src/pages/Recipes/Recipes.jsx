@@ -15,7 +15,8 @@ const Recipes = ({ recipe }) => {
     // eslint-disable-next-line react/prop-types
     const { recipe_name, ingredients, cooking_method, rating } = recipe;
     return (
-        <Col style={{ height: "15em" }} className='p-2  '>
+        <Col className='p-2  '>
+            {/* <Col style={{ height: "15em" }} className='p-2  '> */}
             <Card border="primary bg-light p-2 " >
                 <Card.Header>
                     <Card.Title className="text-primary">{recipe_name}</Card.Title>

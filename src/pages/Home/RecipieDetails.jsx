@@ -3,10 +3,10 @@ import caption from "../../assets/caption.jpg"
 
 const RecipieDetails = () => {
     return (
-        <div style={{ backgroundColor: "yellow" }} className="container">
+        <div style={{ backgroundColor: "#FFC200" }} className="container">
             <Row>
                 <Col>
-                    <img className="p-3" src={caption} alt="" />
+                    <img className="p-3 w-100" src={caption} alt="" />
                 </Col>
                 <Col className="d-flex  align-items-center">
                     <div className="text-dark ">

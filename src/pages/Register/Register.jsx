@@ -115,7 +115,7 @@ const Register = () => {
 
 
                     </Col>
-                    <Col style={{ backgroundImage: `url(${loginBg})`, backgroundSize: "cover" }} className="col-md-6 mt-2 d-flex  align-items-center justity-content-center "  >
+                    <Col style={{ backgroundImage: `url(${loginBg})`, backgroundSize: "cover" }} className="col-md-6 col-12 mt-2 d-flex  align-items-center justity-content-center "  >
                         <div className="w-100">
                             <h3 className="text-white text-center">Register </h3>
                             <h3 className="text-white text-center">Those who are lazy user😂</h3>
