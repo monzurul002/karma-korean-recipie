@@ -10,12 +10,13 @@ const Login = () => {
     const [error, setError] = useState(null);
     const { googleSignIn, emailPasswordSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
-    const location = useLocation()
+    const location = useLocation();
+    const redirectPath = location.state?.from?.pathname;
     const handelGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                navigate(redirectPath || '/', { replace: true })
             })
             .catch(error => {
                 setError(error.message)

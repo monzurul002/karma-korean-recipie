@@ -1,4 +1,4 @@
-# KARMA-KOREAN-RECIPIES
+# KARMA-KOREAN-RECIPIES (#https://karma-korean-recipe.web.app/)
 
 ### It's a Full-Stack React base E-Commerce type Web App.
 
@@ -19,7 +19,7 @@
 
 ---
 
-### See dtails .. [Click Here](https://gadgets-emporium.web.app)
+### See dtails .. [Click Here](https://karma-korean-recipe.web.app/)
 
 
 
